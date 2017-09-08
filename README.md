@@ -4,14 +4,14 @@
 and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
 
 1. New Ruby on Rails app
-  1.1 Create some directory and cd in it.
-  1.2 Run `bundler init` which will create `Gemfile`.
-  1.3 Insert `gem 'rails', '~> 5.1.3'` into `Gemfile`.
-  1.4 Run `bundle` to install rails gem.
-  1.5 Run `rails new myapp --webpack`. It wil create RoR app structure in folder `myapp` and then initialize Webpack(er) and download required NPM packs.
-  1.6 Go into `myapp` folder
-  1.7 Congratulations, you can run rails server by `bundle exec rails s`.
-  1.8 Open http://localhost:3000 in your browser and You will see 'Yay! You’re on Rails!' page. Frankly, I do not know where it came from. Some magic.
+   1. Create some directory and cd in it.
+   2. Run `bundler init` which will create `Gemfile`.
+   3. Insert `gem 'rails', '~> 5.3'` into `Gemfile`.
+   4. Run `bundle` to install rails gem.
+   5. Run `rails new myapp --webpack`. It wil create RoR app structure in folder `myapp` and then initialize Webpack(er) and download required NPM packs.
+   6. Go into `myapp` folder
+   7. Congratulations, you can run rails server by `bundle exec rails s`.
+   8. Open http://localhost:3000 in your browser and You will see 'Yay! You’re on Rails!' page. Frankly, I do not know where it came from. Some magic.
 
 2. Some Bootstrap page
   2.1 Copy file `https://github.com/foton/rails_with_webpack_and_bootstrap/blob/master/myapp/w3schools_bootstrap_example.html` to `myapp/public/index.html`.
