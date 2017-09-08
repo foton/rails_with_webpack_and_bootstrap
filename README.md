@@ -22,6 +22,11 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
 4.3) run `rails g controller bootstrap index` in `myapp` folder
 4.4) Restart rails server to take changes in routes.
 4.5) Open http://localhost:3000/bootstrap/index. It is just template. Notice where you can find it.
+4.6) Replace content of `app/views/bootstrap/index.html.erb` with whole `<div class="container">
+ ....</div>` from `public/index.html`.
+4.7) Now we have two ugly pages! But one of them is using whole Rails stack. If you open source code of `/bootstrap/index`, you will see, that there are plenty on JavaScript inclusions. Last one,`/assets/application.self-.....js` comming from Rails assets pipeline and is empty (comments only).
+
+
 
 
 
