@@ -31,8 +31,26 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
 5.3) Require it in our 'entry point' (see Webpack(er) documentation). By default it is file `myapp/javascript/packs/application.js`. Insert lines `import {} from 'bootstrap';` and  `import 'bootstrap/dist/css/bootstrap.min.css';` into it. Yes, we import CSS in JavaScript file!
 5.4) Run Webpack in `myapp` directory: `bundle exec bin/webpack`. This will create file (by default) `myapp/public/packs/application-:hash:.js` and `myapp/public/packs/application-:hash:.css`.
 5.5) Make Rails to load this file by adding `<%= javascript_pack_tag 'application' %>` and `<%= stylesheet_pack_tag 'application' %>` into `myapp/app/views/layouts/application.html.erb` after `<%= javascript_include_tag ... %>`.
-5.6) If you open http://localhost:3000/bootstrap/index now, page is pretty again.
+5.6) If you open http://localhost:3000/bootstrap/index now, page is pretty again. But, no fading on alert close!
 
+6.1) Bootstrap needs jQuery for it. Its dependency but it is not installed along (golden Bundler!).
+We have to install it: `bin/yarn add jquery` and  `bin/yarn add popper` (it is mentioned at [Bootstrap page](http://getbootstrap.com/docs/4.0/getting-started/webpack/)).
+6.2) Now we have to "inject" 'jQuery' module as '$' or 'jQuery' into other modules with Webpack plugin `ProvidePlugin`. Insert this code into `myapp/config/webpack/environment.js` (shared between all others)
+right before `module.exports = environment`:
+```
+const  webpack = require("webpack");
+environment.plugins.set(
+  'Provide Global Variables',
+  new webpack.ProvidePlugin({
+        $: 'jquery',
+        jQuery: 'jquery',
+        'window.jQuery': 'jquery',
+        Popper: ['popper.js', 'default'],
+  })
+)
+
+```
+6.3) Run Webpack in `myapp` directory again: `bundle exec bin/webpack` and now the alerts can fade on close.
 
 
 
