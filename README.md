@@ -14,8 +14,8 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/). And [Ruby](https://www.ru
    8. Open http://localhost:3000 in your browser and You will see _'Yay! You’re on Rails!'_ page. Frankly, I do not know where it came from. Some magic.
 
 2. Get some Bootstrap page
-   1. Copy file `https://github.com/foton/rails_with_webpack_and_bootstrap/blob/master/myapp/w3schools_bootstrap_example.html` to `./myapp/public/index.html`.
-   2. If you refresh `http://localhost:3000`, you will see nice page with bootstrap alerts, which are fading on close. Something to work with. This page (in it's source code) download `JQuery` (JS) and `Bootstrap` (JS + CSS) from internet. If you stop your internet connection, it will not be pretty anymore. BUT! With Webpacker it can!
+   1. Copy file https://github.com/foton/rails_with_webpack_and_bootstrap/blob/master/myapp/w3schools_bootstrap_example.html to `./myapp/public/index.html`.
+   2. If you refresh http://localhost:3000, you will see nice page with bootstrap alerts, which are fading on close. Something to work with. This page (in it's source code) download `JQuery` (JS) and `Bootstrap` (JS + CSS) from internet. If you stop your internet connection, it will not be pretty anymore. BUT! With Webpacker it can!
 
 3. What (I think) is Webpack(er)
    1. Gem `Webpacker` uses `Webpack`, which is package of JavaScript (executed by `Node.js`) to squash JS modules (aka packages) needed by your app, into one big JS file. In short. `Webpack` itself is independent on Rails, `Webpacker` just add support for it into Rails app. `Webpack(er)` can replace (or coexists with) Rails assets pipeline, which also build big JS file from many (and do more things).
@@ -25,9 +25,9 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/). And [Ruby](https://www.ru
    2. Because files in `./myapp/public` folder are not processed by Rails stack, we have to create some structure inside Rails app.
    3. Run `rails g controller bootstrap index` in `./myapp` folder.
    4. Restart rails server to get changes in routes.
-   5. Open `http://localhost:3000/bootstrap/index`. It is just template, notice where you can find it.
+   5. Open http://localhost:3000/bootstrap/index. It is just template, notice where you can find it.
    6. Replace content of `app/views/bootstrap/index.html.erb` with whole `<div class="container">....</div>` from `./myapp/public/index.html`.
-   7. Now we have two ugly pages! But one of them is using whole Rails stack. If you look at source code of `http://localhost:3000/bootstrap/index`, you will see, that there are plenty of JavaScript inclusions. Last one,`/assets/application.self-.....js` comming from Rails assets pipeline and is empty (comments only).
+   7. Now we have two ugly pages! But one of them is using whole Rails stack. If you look at source code of http://localhost:3000/bootstrap/index, you will see, that there are plenty of JavaScript inclusions. Last one,`/assets/application.self-.....js` comming from Rails assets pipeline and is empty (comments only).
 
 5. Take Webpack and Bootstrap into play
    If we need Bootstrap from Webpack, we have to:
@@ -40,7 +40,7 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/). And [Ruby](https://www.ru
       <%= stylesheet_pack_tag 'application' %>
       ```
       into `./myapp/app/views/layouts/application.html.erb` after `<%= javascript_include_tag ... %>`.
-   5. If you open `http://localhost:3000/bootstrap/index` now, page is pretty again. But, no fading on alert close!
+   5. If you open http://localhost:3000/bootstrap/index now, page is pretty again. But, no fading on alert close!
 
 6. jQuery is not automagically included
    1. Bootstrap needs jQuery for it. It is dependency, but it is not installed along (_golden Bundler!_).
@@ -69,7 +69,7 @@ We have to install it: `bin/yarn add jquery` and  `bin/yarn add popper` (it is m
             { test: require.resolve("jquery"), loader: "expose-loader?$!expose-loader?jQuery" }
         )
         ```
-   2. Run Webpack in `./myapp` directory again: `bundle exec bin/webpack` and now You have access to `$()` in browser console (try `$().jquery` for example).
+   2. Run Webpack in `./myapp` directory again: `bundle exec bin/webpack`. Refresh page and now You have access to `$()` in browser console (try `$().jquery` for example).
 
 ## Why all this?
 * You don't have to use ruby gem for pure JavaScript stuff in your app. No need to wait, when maintainer add new version of bootstrap.
