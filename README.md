@@ -17,7 +17,11 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
 
 3.1) `Webpacker` uses `Webpack`, which is package of Javascript (run by `Node.js`) to squash JS modules (aka packages) You need in your app, into one big JS file. In short. `Webpack` itself is undependent on RoR, `Webpacker` add support for it into Rails app. `Webpack(er)` can replace (or coexists with) Rails assets pipeline, which alos build big JS file from many.
 
-
+4.1) Let's make page ugly permanently until we supply Bootstrap by Webpacker. Delete lines with `<link rel="stylesheet" ...` and `<script src= .....`.
+4.2) Because files in `public` are not processed by Rails stack we have to create some structe inside Rails app.
+4.3) run `rails g controller bootstrap index` in `myapp` folder
+4.4) Restart rails server to take changes in routes.
+4.5) Open http://localhost:3000/bootstrap/index. It is just template. Notice where you can find it.
 
 
 
