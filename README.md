@@ -52,6 +52,24 @@ environment.plugins.set(
 ```
 6.3) Run Webpack in `myapp` directory again: `bundle exec bin/webpack` and now the alerts can fade on close.
 
+7.1) [OPTIONAL] Another BUT! If you open browser development console, You cannot use `$()` or `jQuery()`. They are not set as global variables (see https://stackoverflow.com/a/30766733/1223501). They are injected into modules at bundling time. To have `$()` in console You must expose it with `expose-loader`. Install it by `bin/yarn add expose-loader` and then add code below after `const { environment } = require('@rails/webpacker')` in `myapp/config/webpack/environment.js`:
+```
+environment.loaders.set(
+    'expose jQuery object to global space',
+    { test: require.resolve("jquery"), loader: "expose-loader?$!expose-loader?jQuery" }
+)
+```
+7.2) Run Webpack in `myapp` directory again: `bundle exec bin/webpack` and now You will have access to `$()` in browser console (try `$().jquery`).
+
+
+Why all this? You dn't have to use ruby gem for pure JavaScript stuff in your app and wait when maintainer annd new version of bootstrap. You don't have to insert tons of `<script>` in your page.
+Webpack is used outside Ruby world too, so updates are more frequent.
+
+But there is one con: If gem is half ruby, half JS it's code have to be bundled by Rails asset pipeline (into `myapp/public/assets/appilication-:hash:.js`. Webpack cannot see into gems so You cannot import JS from them.
+If you want to take out all JavaScripts from Rails asset pipeline, you have to either extract JS part from gem into `myapp/javascript` (sub)folder and import it by relative path or try to find NPM package derived from gem. And add it by Yarn.
+
+And one more thing. Webpack can bundle (and process) images, fonts, CSS and many other assest. For example You can set rule _For all PNG images smaller than 50 kB, stick them into page as Base64 encoded_. but that is another story.
+
 
 
 
