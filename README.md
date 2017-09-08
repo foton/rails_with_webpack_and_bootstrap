@@ -14,12 +14,12 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
    8. Open http://localhost:3000 in your browser and You will see 'Yay! You’re on Rails!' page. Frankly, I do not know where it came from. Some magic.
 
 2. Some Bootstrap page
-  2.1 Copy file `https://github.com/foton/rails_with_webpack_and_bootstrap/blob/master/myapp/w3schools_bootstrap_example.html` to `myapp/public/index.html`.
-  2.3 If you refresh http://localhost:3000 you will see nice page with bootstrap allerts which fading on close. Something to work with.
-  2.4 Page (in source code) download `JQuery` (JS) and `Bootstrap` (JS + CSS) from net. I you stop your internet connection, it will not be pretty anymore. BUT! With Webpacker it can!
+  1. Copy file `https://github.com/foton/rails_with_webpack_and_bootstrap/blob/master/myapp/w3schools_bootstrap_example.html` to `myapp/public/index.html`.
+  2. If you refresh http://localhost:3000 you will see nice page with bootstrap allerts which fading on close. Something to work with.
+  3. Page (in source code) download `JQuery` (JS) and `Bootstrap` (JS + CSS) from net. I you stop your internet connection, it will not be pretty anymore. BUT! With Webpacker it can!
 
 3. What (I think) is Webpack(er)
-  3.1 `Webpacker` uses `Webpack`, which is package of Javascript (run by `Node.js`) to squash JS modules (aka packages) You need in your app, into one big JS file. In short. `Webpack` itself is undependent on RoR, `Webpacker` add support for it into Rails app. `Webpack(er)` can replace (or coexists with) Rails assets pipeline, which alos build big JS file from many.
+   1. `Webpacker` uses `Webpack`, which is package of Javascript (run by `Node.js`) to squash JS modules (aka packages) You need in your app, into one big JS file. In short. `Webpack` itself is undependent on RoR, `Webpacker` add support for it into Rails app. `Webpack(er)` can replace (or coexists with) Rails assets pipeline, which alos build big JS file from many.
 
 4. We need ugly page to make it beautiful
   4.1 Let's make page ugly permanently, until we supply Bootstrap by Webpacker. Delete lines with `<link rel="stylesheet" ...` and `<script src= .....`.
