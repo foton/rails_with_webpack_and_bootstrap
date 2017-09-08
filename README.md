@@ -26,6 +26,16 @@ and [Yarn](https://yarnpkg.com/lang/en/docs/install/).
  ....</div>` from `public/index.html`.
 4.7) Now we have two ugly pages! But one of them is using whole Rails stack. If you open source code of `/bootstrap/index`, you will see, that there are plenty on JavaScript inclusions. Last one,`/assets/application.self-.....js` comming from Rails assets pipeline and is empty (comments only).
 
+5.1) If we need Bootstrap from Webpack, we have to:
+5.2) Add it's package to ours: run `bin/yarn add bootstrap` in `myapp` directory. This will add bootstrap line to `myapp/packages.json`, something like Gemfile for node.js/npm/yarn, and content of package (and it's dependencies) to `myapp/node_modules`.
+5.3) Require it in our 'entry point' (see Webpack(er) documentation). By default it is file `myapp/javascript/packs/application.js`. Insert lines `import {} from 'bootstrap';` and  `import 'bootstrap/dist/css/bootstrap.min.css';` into it. Yes, we import CSS in JavaScript file!
+5.4) Run Webpack in `myapp` directory: `bundle exec bin/webpack`. This will create file (by default) `myapp/public/packs/application-:hash:.js` and `myapp/public/packs/application-:hash:.css`.
+5.5) Make Rails to load this file by adding `<%= javascript_pack_tag 'application' %>` and `<%= stylesheet_pack_tag 'application' %>` into `myapp/app/views/layouts/application.html.erb` after `<%= javascript_include_tag ... %>`.
+5.6) If you open http://localhost:3000/bootstrap/index now, page is pretty again.
+
+
+
+
 
 
 
